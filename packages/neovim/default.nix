@@ -26,6 +26,7 @@ in neovim.override {
         nerdtree
         surround
         vim-airline
+        vim-colorschemes
         vim-nix
         vim-tmux-navigator
         vim-trailing-whitespace
