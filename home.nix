@@ -53,6 +53,10 @@ in {
       ];
     };
     command-not-found.enable = true;
+    fzf = {
+      enable = true;
+      enableBashIntegration = true;
+    };
     git = {
       enable = true;
       userName = "Jacek Galowicz";
