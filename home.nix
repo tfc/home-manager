@@ -34,6 +34,7 @@ in {
         ll = "ls -lsa";
         nrn = "nix repl '<nixpkgs>'";
         nrnc = "nix repl '<nixpkgs/nixos>'";
+        nix-build-koma = "nix-build --option extra-substituters http://binary-cache.vpn.cyberus-technology.de --option trusted-public-keys cache.vpn.cyberus-technology.de:Snf50jUtTSHKmuv7Iz268zI9eCG8CYefCGpEq2Bt1P8= ";
       };
       profileExtra = ''
         if [ -S "/run/user/$UID/gnupg/S.gpg-agent.ssh" ]; then
