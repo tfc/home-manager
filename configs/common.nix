@@ -11,6 +11,7 @@ in {
     htop
     mosh
     nix-top
+    nixops
     pandoc
     shellcheck
     sloccount
