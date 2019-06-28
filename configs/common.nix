@@ -24,6 +24,10 @@ in {
     bash = {
       enable = true;
       sessionVariables = {
+        CLICOLOR = 1;
+        LSCOLORS = "GxFxCxDxBxegedabagaced";
+        LC_ALL = "en_US.UTF-8";
+        LANG = "en_US.UTF-8";
       };
       shellAliases = {
         ".." = "cd ..";
