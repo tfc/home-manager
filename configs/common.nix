@@ -7,6 +7,7 @@ in {
   home.packages = with pkgs; [
     bashInteractive
     bash-completion
+    direnv
     gpa
     htop
     mosh
@@ -38,6 +39,7 @@ in {
       };
       profileExtra = ''
         export PS1="\[\033[38;5;6m\]\A\[$(tput sgr0)\]\[\033[38;5;15m\] \[$(tput sgr0)\]\[\033[38;5;2m\]\u\[$(tput sgr0)\]\[\033[38;5;10m\]@\[$(tput sgr0)\]\[\033[38;5;2m\]\h\[$(tput sgr0)\]\[\033[38;5;15m\] \[$(tput sgr0)\]\[\033[38;5;9m\]\W\[$(tput sgr0)\]\[\033[38;5;15m\] \\$\[$(tput sgr0)\] ";
+        eval "$(direnv hook bash)"
       '';
     };
     bat.enable = true;
