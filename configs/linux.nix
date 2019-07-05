@@ -19,17 +19,11 @@
   programs = {
     browserpass = {
       enable = true;
-      browsers = [ "chromium" "firefox" ];
+      browsers = [ "firefox" ];
     };
-    chromium = {
+    firefox = {
       enable = true;
-      extensions = [
-        "cjpalhdlnbpafiamejdnhcphjbkeiagm" # ublock origin
-      ];
-    };
-    gnome-terminal = {
-      #enable = true;
-      showMenubar = false;
+      extensions = [];
     };
   };
 
