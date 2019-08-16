@@ -5,6 +5,8 @@
     ./common.nix
   ];
   home.packages = with pkgs; [
+    evince
+    docker
     gimp
     gitg
     haskellPackages.hindent
@@ -17,6 +19,15 @@
   #home.stateVersion = "19.03";
 
   programs = {
+    bash = {
+      profileExtra = ''
+        export SSH_AUTH_SOCK="/run/user/$UID/gnupg/S.gpg-agent.ssh"
+      '';
+    };
+    broot = {
+      enable = true;
+      enableBashIntegration = true;
+    };
     browserpass = {
       enable = true;
       browsers = [ "firefox" ];
