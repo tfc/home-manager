@@ -25,6 +25,7 @@ in neovim.override {
         neomake
         nerdtree
         surround
+        stylish-haskell
         vim-airline
         vim-colorschemes
         vim-nix

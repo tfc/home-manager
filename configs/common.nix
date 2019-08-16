@@ -2,7 +2,6 @@
 
 let
   customPackages = import ../packages { inherit pkgs; };
-
 in {
   home.packages = with pkgs; [
     bashInteractive
@@ -10,11 +9,13 @@ in {
     direnv
     gpa
     htop
+    lorri
     mosh
     nix-top
     nixops
     pandoc
     shellcheck
+    haskellPackages.stylish-haskell
     sloccount
     unrar
     unzip
