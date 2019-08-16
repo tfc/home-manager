@@ -91,7 +91,13 @@ let g:haddock_browser_callformat = "%s %s"
 
 autocmd BufEnter *.hs set formatprg=stylish-haskell
 
-autocmd FileType c,cpp,haskell,bash,python,txt,nix,markdown autocmd BufWritePre <buffer> %s/\s\+$//e
+function TrimEndLines()
+    let save_cursor = getpos(".")
+    :silent! %s#\s\+$## " Trailing spaces in each line
+    :silent! %s#\($\n\s*\)\+\%$## " Empty lines at end of file
+    call setpos('.', save_cursor)
+endfunction
+autocmd FileType c,cpp,haskell,bash,python,txt,nix,markdown autocmd BufWritePre <buffer> call TrimEndLines()
 
 autocmd FileType html setlocal shiftwidth=2 tabstop=2
 autocmd FileType haskell setlocal shiftwidth=4 tabstop=4
