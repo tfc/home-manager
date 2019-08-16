@@ -4,17 +4,20 @@ let
   customPackages = import ../packages { inherit pkgs; };
 in {
   home.packages = with pkgs; [
-    bashInteractive
     bash-completion
+    bashInteractive
+    cachix
     gpa
+    haskellPackages.stylish-haskell
     htop
     lorri
+    magic-wormhole
     mosh
     nix-top
     nixops
     pandoc
+    python3Packages.glances
     shellcheck
-    haskellPackages.stylish-haskell
     sloccount
     unrar
     unzip
