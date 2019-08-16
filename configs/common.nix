@@ -10,7 +10,6 @@ in {
     gpa
     haskellPackages.stylish-haskell
     htop
-    lorri
     magic-wormhole
     mosh
     nix-top
