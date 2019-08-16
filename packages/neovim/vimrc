@@ -94,6 +94,7 @@ autocmd BufEnter *.hs set formatprg=stylish-haskell
 autocmd FileType c,cpp,haskell,bash,python,txt,nix,markdown autocmd BufWritePre <buffer> %s/\s\+$//e
 
 autocmd FileType html setlocal shiftwidth=2 tabstop=2
+autocmd FileType haskell setlocal shiftwidth=4 tabstop=4
 
 
 "nerdtree settings
