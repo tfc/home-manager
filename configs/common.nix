@@ -24,6 +24,15 @@ in {
     zip
   ] ++ (pkgs.lib.mapAttrsToList (_: x: x) customPackages);
 
+  home.file = {
+    ".ghci".text = ''
+      :set prompt "λ> "
+    '';
+    ".cabal/config".text = ''
+      nix: True
+    '';
+  };
+
   programs = {
     bash = {
       enable = true;
