@@ -6,7 +6,6 @@ in {
   home.packages = with pkgs; [
     bashInteractive
     bash-completion
-    direnv
     gpa
     htop
     lorri
@@ -45,6 +44,7 @@ in {
     };
     bat.enable = true;
     command-not-found.enable = true;
+    direnv.enable = true;
     fzf = {
       enable = true;
       enableBashIntegration = true;
