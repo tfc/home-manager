@@ -15,7 +15,6 @@ in {
     nix-top
     nixops
     pandoc
-    python3Packages.glances
     shellcheck
     sloccount
     unrar

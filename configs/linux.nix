@@ -5,14 +5,15 @@
     ./common.nix
   ];
   home.packages = with pkgs; [
-    evince
     docker
+    evince
     gimp
     gitg
     haskellPackages.hindent
     haskellPackages.stylish-haskell
     hlint
     inkscape
+    python3Packages.glances
     spotify
   ];
 
