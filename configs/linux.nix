@@ -3,7 +3,10 @@
 {
   imports = [
     ./common.nix
+    ../modules/shell/bash.nix
+    ../modules/yubikey.nix
   ];
+
   home.packages = with pkgs; [
     docker
     evince
@@ -13,18 +16,16 @@
     haskellPackages.stylish-haskell
     hlint
     inkscape
+    nerdfonts
+    powerline-fonts
     python3Packages.glances
     spotify
   ];
 
-  #home.stateVersion = "19.03";
+  home.stateVersion = "19.03";
+  fonts.fontconfig.enable = true;
 
   programs = {
-    bash = {
-      profileExtra = ''
-        export SSH_AUTH_SOCK="/run/user/$UID/gnupg/S.gpg-agent.ssh"
-      '';
-    };
     broot = {
       enable = true;
       enableBashIntegration = true;
@@ -36,15 +37,6 @@
     firefox = {
       enable = true;
       extensions = [];
-    };
-  };
-
-  services = {
-    gnome-keyring.components = [ "pkcs11" "secrets" ]; # no SSH
-    gpg-agent = {
-      enable = true;
-      defaultCacheTtl = 1800;
-      enableSshSupport = true;
     };
   };
 }
