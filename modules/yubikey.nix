@@ -1,9 +1,13 @@
 { pkgs, lib, ... }:
 
 {
-  programs.bash.sessionVariables = {
-    SSH_AUTH_SOCK = "/run/user/$UID/gnupg/S.gpg-agent.ssh";
-  };
+  home.packages = with pkgs; [
+    gpa
+  ];
+
+  programs.bash.bashrcExtra = ''
+    SSH_AUTH_SOCK="/run/user/$UID/gnupg/S.gpg-agent.ssh"
+  '';
 
   programs.zsh.sessionVariables = {
     SSH_AUTH_SOCK = "~/.gnupg/S.gpg-agent.ssh";
