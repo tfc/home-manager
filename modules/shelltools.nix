@@ -14,7 +14,7 @@ in {
     unrar
     unzip
     zip
-  ];
+  ] ++ customPackages;
 
   programs = {
     bat.enable = true;
@@ -46,5 +46,6 @@ in {
       enable = true;
       enableBashIntegration = true;
     };
+    man.enable = true;
   };
 }
