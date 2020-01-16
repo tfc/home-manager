@@ -5,8 +5,16 @@ let
     neovim
     tmux
   ];
+  collectOld = pkgs.writeScriptBin "nix-collect-old" ''
+    nix-env --delete-generations old
+    nix-collect-garbage
+    nix-collect-garbage -d
+    nix-store --gc --print-dead
+    nix-store --optimize
+  '';
 in {
   home.packages = with pkgs; [
+    collectOld
     magic-wormhole
     mosh
     nix-top
