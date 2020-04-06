@@ -15,6 +15,7 @@ let
 in {
   home.packages = with pkgs; [
     collectOld
+    direnv
     magic-wormhole
     mosh
     nix-top
