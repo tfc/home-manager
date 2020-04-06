@@ -38,7 +38,6 @@ in neovim.override {
         neomake
         nerdtree
         surround
-        stylish-haskell
         vim-airline
         vim-cmake
         vim-colorschemes
