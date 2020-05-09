@@ -7,7 +7,6 @@ in {
 
   home.packages = with pkgs; [
     haskellPackages.hindent
-    haskellPackages.stylish-haskell
     hlint
   ] ++ (with customPackages; [
     tmux
