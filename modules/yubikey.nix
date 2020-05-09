@@ -1,18 +1,28 @@
 { pkgs, lib, ... }:
 
-{
+let
+  sessionVariables = {
+    EDITOR = "vim";
+    FOO = "Bar";
+    SSH_AUTH_SOCK = "/run/user/$UID/gnupg/S.gpg-agent.ssh";
+  };
+
+in {
   home.packages = with pkgs; [
     gpa
   ];
-
-  programs.bash.bashrcExtra = ''
-    SSH_AUTH_SOCK="/run/user/$UID/gnupg/S.gpg-agent.ssh"
-  '';
 
   programs.zsh.sessionVariables = {
     SSH_AUTH_SOCK = "~/.gnupg/S.gpg-agent.ssh";
   };
 } // lib.optionalAttrs (builtins.currentSystem == "x86_64-linux") {
+  home.sessionVariables = sessionVariables;
+
+  programs.bash.bashrcExtra = ''
+    SSH_AUTH_SOCK="/run/user/$UID/gnupg/S.gpg-agent.ssh"
+  '';
+
+
   services = {
     gnome-keyring = {
       enable = true;
@@ -24,4 +34,7 @@
       enableSshSupport = true;
     };
   };
+
+  # is ignored by gnome
+  systemd.user.sessionVariables = sessionVariables;
 }
