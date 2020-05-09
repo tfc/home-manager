@@ -1,15 +1,14 @@
 { ... }:
 {
-  imports = [ ./spotifyd-definition.nix ];
-
   services.spotifyd = {
     enable = true;
-    settings =  {
+    settings = {
       global = {
         username = "jacek.galowicz@gmail.com";
-        password = "E5S37HCC";
-        device_name = "jongepad";
+        password_cmd = "cat ~/.config/nixpkgs/private/spotify_pw";
         backend = "pulseaudio";
+        device_name = "nixosjongepad";
+        device_type = "computer";
       };
     };
   };
