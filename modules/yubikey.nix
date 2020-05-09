@@ -14,7 +14,10 @@
   };
 } // lib.optionalAttrs (builtins.currentSystem == "x86_64-linux") {
   services = {
-    gnome-keyring.components = [ "pkcs11" "secrets" ]; # no SSH
+    gnome-keyring = {
+      enable = true;
+      components = [ "pkcs11" "secrets" ]; # no SSH
+    };
     gpg-agent = {
       enable = true;
       defaultCacheTtl = 1800;
