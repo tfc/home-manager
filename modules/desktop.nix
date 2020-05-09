@@ -9,7 +9,7 @@
 
   manual.html.enable = true;
 
-  programs.  firefox = {
+  programs.firefox = {
     enable = true;
     extensions = [];
   };
