@@ -16,6 +16,7 @@ in {
   home.packages = with pkgs; [
     collectOld
     direnv
+    killall
     magic-wormhole
     mosh
     nix-top
