@@ -1,0 +1,60 @@
+#!/usr/bin/env bash
+
+set -euo pipefail
+
+while getopts "C:" opt; do
+   case $opt in
+       C) basePath=$OPTARG;;
+       *) echo "usage: sync_repos -C <base path for git repos> < input.json"
+          exit 1;;
+   esac
+done
+
+if [ ! -d "$basePath" ]; then
+  echo "-C must point to an existing folder!"
+  exit 1
+fi
+
+function checkoutRepo() {
+  repoDestination=$1
+  repoName=$2
+  remotesList=$3
+
+  read -r remoteName remoteUrl <<< "$remotesList"
+
+  if [ ! -d "$repoDestination" ]; then
+    echo "Repo $repoDestination does not exist yet - cloning..."
+    if ! git clone "$remoteUrl" "$repoDestination"; then
+      echo "Unable to clone $repoDestination!"
+      return
+    fi
+  else
+    if [ ! -d "$repoDestination/.git" ]; then
+      echo "$repoDestination exists, but it's not a git repo!"
+      return
+    fi
+    echo "Repo $repoDestination exists."
+  fi
+
+  while read -r remoteName remoteUrl; do
+    if git -C "$repoDestination" remote get-url "$remoteName" &> /dev/null; then
+      echo "   setting $remoteName to point to $remoteUrl"
+      git -C "$repoDestination" remote set-url "$remoteName" "$remoteUrl"
+    else
+      echo "   adding $remoteName to point to $remoteUrl"
+      git -C "$repoDestination" remote add "$remoteName" "$remoteUrl"
+    fi
+
+    #git -C "$repoDestination" fetch --all
+  done <<< "$remotesList"
+}
+
+while read -r repoDestination remotesDoc; do
+  repoName=$(basename "$repoDestination")
+  remotesList=$(jq -cr 'to_entries | map(.value |= tostring) | map(.key + " " + .value) | .[]' <<< "$remotesDoc")
+
+  cPath="$basePath/$repoDestination"
+
+  checkoutRepo "$cPath" "$repoName" "$remotesList"  \
+    || echo "Unable to handle $repoDestination"
+done <<< "$(jq -cr 'to_entries | map(.value |= tostring) | map(.key + " " + .value) | .[]' < /dev/stdin)"
