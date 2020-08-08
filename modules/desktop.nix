@@ -17,4 +17,13 @@
     enable = true;
     extensions = [];
   };
+
+  programs.chromium = {
+    enable = true;
+    extensions = [
+      "cfhdojbkjhnklbpkdaibdccddilifddb" # adblock plus
+      "gcbommkclmclpchllfjekcdonpmejbdp" # https everywhere
+      "hdokiejnpimakedhajhdlcegeplioahd" # lastpass
+    ];
+  };
 }

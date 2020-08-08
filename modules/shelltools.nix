@@ -15,7 +15,6 @@ let
 in {
   home.packages = with pkgs; [
     collectOld
-    direnv
     killall
     magic-wormhole
     mosh
@@ -29,6 +28,15 @@ in {
   programs = {
     bat.enable = true;
     command-not-found.enable = true;
+    direnv = {
+      enable = true;
+      enableBashIntegration = true;
+      enableNixDirenvIntegration = true;
+    };
+    dircolors = {
+      enable = true;
+      enableBashIntegration = true;
+    };
     htop = {
       enable = true;
       colorScheme = 6;
