@@ -32,6 +32,10 @@ let
   '';
 in {
   home.packages = with pkgs; [
+    jq
+    niv
+    nix-linter
+    nixpkgs-fmt
     repo_sync_fixed
     shellcheck
     sloccount

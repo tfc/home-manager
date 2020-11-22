@@ -6,7 +6,6 @@ in {
   imports = [ ./programming.nix ];
 
   home.packages = with pkgs; [
-    haskellPackages.hindent
     hlint
   ] ++ (with customPackages; [
     tmux
