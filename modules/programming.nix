@@ -64,6 +64,7 @@ let
   '';
 in {
   home.packages = with pkgs; [
+    gti
     jq
     niv
     nix-linter
