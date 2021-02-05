@@ -20,6 +20,7 @@
     skypeforlinux
     spotify
     thunderbird-78
+    xournal
   ];
 
   manual.html.enable = true;
