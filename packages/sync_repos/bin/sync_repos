@@ -25,7 +25,7 @@ function checkoutRepo() {
   if [ ! -d "$repoDestination" ]; then
     echo "Repo $repoDestination does not exist yet - cloning..."
     if ! git clone "$remoteUrl" "$repoDestination"; then
-      echo "Unable to clone $repoDestination!"
+      echo "Unable to clone $repoDestination from $remoteUrl!"
       return
     fi
   else
