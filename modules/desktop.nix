@@ -19,7 +19,7 @@
     signal-desktop
     skypeforlinux
     spotify
-    thunderbird-78
+    thunderbird-bin
     xournal
   ];
 
