@@ -1,25 +1,22 @@
 { pkgs, ... }:
 
 {
+  nixpkgs.config.allowUnfree = true;
+
   fonts.fontconfig.enable = true;
 
   home.packages = with pkgs; [
     deja-dup
+    element-desktop
     gimp
-    gnome3.cheese
-    gnome3.eog
-    gnome3.evince
-    gnome3.gnome-tweak-tool
-    gnomeExtensions.appindicator
-    gnomeExtensions.dash-to-dock
     inkscape
     libreoffice
     mattermost-desktop
-    element-desktop
+    retext
     signal-desktop
     skypeforlinux
     spotify
-    thunderbird-bin
+    vlc
     xournal
   ];
 
