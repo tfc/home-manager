@@ -1,4 +1,4 @@
-{ pkgs, lib, ... }:
+{ pkgs, lib, system,... }:
 
 let
   sessionVariables = {
@@ -15,13 +15,13 @@ in {
   programs.zsh.sessionVariables = {
     SSH_AUTH_SOCK = "~/.gnupg/S.gpg-agent.ssh";
   };
-} // lib.optionalAttrs (builtins.currentSystem == "x86_64-linux") {
+
+  # the rest down here should not be enabled on macos
   home.sessionVariables = sessionVariables;
 
   programs.bash.bashrcExtra = ''
     SSH_AUTH_SOCK="/run/user/$UID/gnupg/S.gpg-agent.ssh"
   '';
-
 
   services = {
     gnome-keyring = {
