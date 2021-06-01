@@ -14,14 +14,15 @@ let
 in {
   home.packages = with pkgs; [
     collectOld
+    file
     gtop
     killall
     magic-wormhole
     mosh
     nix-top
-    nixops
     pstree
     qemu
+    tmate
     unrar
     unzip
     zip
