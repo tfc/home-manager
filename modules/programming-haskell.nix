@@ -1,16 +1,11 @@
 { pkgs, ... }:
 
-let
-  customPackages = import ../packages { inherit pkgs; };
-in {
+{
   imports = [ ./programming.nix ];
 
   home.packages = with pkgs; [
     hlint
-  ] ++ (with customPackages; [
-    tmux
-    vim
-  ]);
+  ];
 
   home.file = {
     ".ghci".text = ''
