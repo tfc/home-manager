@@ -4,7 +4,11 @@
   imports = [ ./desktop.nix ];
 
   home.packages = with pkgs; [
+    gnome3.cheese
+    gnome3.eog
+    gnome3.evince
     gnome3.gnome-tweak-tool
+    gnomeExtensions.dash-to-dock
   ];
 
   programs.gnome-terminal = {
