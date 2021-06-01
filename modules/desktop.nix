@@ -25,7 +25,6 @@
   programs.firefox = {
     enable = true;
     extensions = [];
-    enableGnomeExtensions = true;
     package = pkgs.firefox-bin;
     profiles = {
       myprofile = {
