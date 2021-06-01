@@ -41,26 +41,23 @@ in {
     };
     htop = {
       enable = true;
-      colorScheme = 6;
-      cpuCountFromZero = true;
-      highlightBaseName = true;
-      highlightMegabytes = true;
-      highlightThreads = true;
-      meters = {
-        left =  [
-          "AllCPUs2"
-          "Memory"
-          "Swap"
-          { kind = "Battery"; mode = 1; }
-        ];
-        right = [
-          "Hostname"
-          "Tasks"
-          "LoadAverage"
-          "Uptime"
-          { kind = "CPU"; mode = 3; }
-        ];
-      };
+      settings = {
+        color_scheme = 6;
+        cpu_count_from_zero = true;
+        highlight_base_name = true;
+        highlight_megabytes = true;
+        highlight_threads = true;
+      } // (with config.lib.htop; leftMeters {
+        AllCPUs2 = modes.Bar;
+        Memory = modes.Bar;
+        Swap = modes.Bar;
+        Battery = modes.Bar;
+      }) // (with config.lib.htop; rightMeters {
+        Tasks = modes.Text;
+        LoadAverage = modes.Text;
+        Uptime = modes.Text;
+        CPU = modes.Graph;
+      });
     };
     fzf = {
       enable = true;
