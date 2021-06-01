@@ -78,6 +78,8 @@ in {
     enable = true;
     userName = "Jacek Galowicz";
     userEmail = "jacek@galowicz.de";
+    lfs.enable = true;
+    delta.enable = true;
   };
 
   programs.direnv.enable = true;
