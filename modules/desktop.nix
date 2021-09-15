@@ -12,6 +12,14 @@
     inkscape
     libreoffice
     mattermost-desktop
+    (wrapOBS {
+      plugins = with obs-studio-plugins; [
+        obs-gstreamer
+        obs-move-transition
+        obs-multi-rtmp
+        wlrobs
+      ];
+    })
     retext
     signal-desktop
     skypeforlinux
