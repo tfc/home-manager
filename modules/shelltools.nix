@@ -34,7 +34,7 @@ in {
     direnv = {
       enable = true;
       enableBashIntegration = true;
-      enableNixDirenvIntegration = true;
+      nix-direnv.enable = true;
     };
     dircolors = {
       enable = true;
@@ -48,17 +48,17 @@ in {
         highlight_base_name = true;
         highlight_megabytes = true;
         highlight_threads = true;
-      } // (with config.lib.htop; leftMeters {
-        AllCPUs2 = modes.Bar;
-        Memory = modes.Bar;
-        Swap = modes.Bar;
-        Battery = modes.Bar;
-      }) // (with config.lib.htop; rightMeters {
-        Tasks = modes.Text;
-        LoadAverage = modes.Text;
-        Uptime = modes.Text;
-        CPU = modes.Graph;
-      });
+      } // (with config.lib.htop; leftMeters [
+        (bar "AllCPUs2")
+        (bar "Memory")
+        (bar "Swap")
+        (bar "Battery")
+      ]) // (with config.lib.htop; rightMeters [
+        (text "Tasks")
+        (text "LoadAverage")
+        (text "Uptime")
+        (text "CPU")
+      ]);
     };
     fzf = {
       enable = true;
