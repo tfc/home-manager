@@ -2,13 +2,18 @@
 
 {
   home.packages = with pkgs; [
+    arion
+    cachix
+    gh
     gti
     jq
     niv
+    nix-diff
     nix-linter
     nixpkgs-fmt
     shellcheck
     sloccount
+    yq
   ];
 
   programs.git = {

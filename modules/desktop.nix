@@ -11,6 +11,7 @@
     foliate
     foxitreader
     gimp
+    gitg
     inkscape
     libreoffice
     mattermost-desktop
