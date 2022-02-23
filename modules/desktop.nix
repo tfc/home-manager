@@ -8,6 +8,8 @@
   home.packages = with pkgs; [
     deja-dup
     element-desktop
+    foliate
+    foxitreader
     gimp
     inkscape
     libreoffice
@@ -25,7 +27,7 @@
     skypeforlinux
     spotify
     vlc
-    xournal
+    xournalpp
   ];
 
   manual.html.enable = true;
